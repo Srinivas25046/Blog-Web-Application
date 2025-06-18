@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Post</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <h1><a href="/">📝 My Blog</a></h1>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/new">+ New Post</a>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h2>Edit Blog Post</h2>
+    <form action="/edit/<%= post.id %>" method="POST" class="form">
+      <input type="text" name="title" value="<%= post.title %>" required>
+      <textarea name="content" rows="8" required><%= post.content %></textarea>
+      <button type="submit">Update</button>
+    </form>
+  </div>
+</body>
+</html>

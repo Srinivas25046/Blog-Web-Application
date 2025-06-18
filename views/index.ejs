@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Blog</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <h1><a href="/">📝 My Blog</a></h1>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/new">+ New Post</a>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container">
+    <% if (posts.length === 0) { %>
+      <p class="empty">No posts yet. Click "New Post" to add one!</p>
+    <% } else { %>
+      <% posts.forEach(post => { %>
+        <div class="post">
+          <h2><%= post.title %></h2>
+          <p><%= post.content %></p>
+          <form action="/delete" method="POST" class="inline-form" onsubmit="return confirm('Delete this post?');">
+            <input type="hidden" name="id" value="<%= post.id %>">
+            <button type="submit" class="delete-btn">🗑️ Delete</button>
+          </form>
+          <a href="/edit/<%= post.id %>" class="edit-btn">✏️ Edit</a>
+        </div>
+      <% }) %>
+    <% } %>
+  </div>
+</body>
+</html>
